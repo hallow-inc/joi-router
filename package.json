@@ -34,23 +34,23 @@
   "homepage": "https://github.com/koajs/joi-router",
   "dependencies": {
     "@hapi/joi": "17.1.1",
-    "await-busboy": "1.0.3",
+    "busboy": "^1.6.0",
     "clone": "2.1.2",
     "co-body": "6.0.0",
     "debug": "4.1.1",
     "delegates": "1.0.0",
     "flatten": "1.0.3",
-    "is-gen-fn": "0.0.2",
-    "@koa/router": "8.0.2",
+    "@koa/router": "12.0.0",
     "methods": "1.1.2",
+    "black-hole-stream": "0.0.1",
     "sliced": "1.0.1"
   },
   "devDependencies": {
-    "eslint": "^6.7.2",
+    "eslint": "^8.33.0",
     "koa": "^2.11.0",
-    "mocha": "^6.2.2",
-    "nyc": "^14.0.0",
-    "supertest": "^4"
+    "mocha": "^10.0.0",
+    "nyc": "^15.1.0",
+    "supertest": "^6"
   },
   "eslintConfig": {
     "extends": [
