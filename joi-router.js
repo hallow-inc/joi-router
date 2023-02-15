@@ -359,7 +359,7 @@ function makeMultipartParser(spec) {
     if (!ctx.request.is('multipart/*')) {
       return ctx.throw(400, 'expected multipart');
     }
-    ctx.request.parts = busboy({ headers: ctx.request.headers,  });
+    ctx.request.parts = busboy(ctx, opts);
     await next();
   };
 }
