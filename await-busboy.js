@@ -28,7 +28,7 @@ module.exports = (request, options) => {
   const checkFile = options.checkFile
   let lastError
 
-  const busboy = new Busboy(options)
+  const busboy = Busboy(options)
 
   request.on('close', cleanup)
 
