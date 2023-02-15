@@ -2,22 +2,25 @@
 
 const assert = require('assert');
 const debug = require('debug')('koa-joi-router');
-const isGenFn = require('is-gen-fn');
 const flatten = require('flatten');
 const methods = require('methods');
 const KoaRouter = require('@koa/router');
-const busboy = require('await-busboy');
 const parse = require('co-body');
 const Joi = require('@hapi/joi');
 const slice = require('sliced');
 const delegate = require('delegates');
 const clone = require('clone');
+const busboy = require('./await-busboy');
 const OutputValidator = require('./output-validator');
 
 module.exports = Router;
 
 // expose Joi for use in applications
 Router.Joi = Joi;
+
+function isGenFn(obj) {
+  return obj && obj.constructor && 'GeneratorFunction' == obj.constructor.name;
+}
 
 function Router() {
   if (!(this instanceof Router)) {
@@ -356,7 +359,7 @@ function makeMultipartParser(spec) {
     if (!ctx.request.is('multipart/*')) {
       return ctx.throw(400, 'expected multipart');
     }
-    ctx.request.parts = busboy(ctx, opts);
+    ctx.request.parts = busboy({ headers: ctx.request.headers,  });
     await next();
   };
 }
